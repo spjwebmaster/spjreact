@@ -11,7 +11,9 @@ export default function Header (props){
 
                     <div className="col-auto p-0">
                         <div className="navbar-brand d-flex align-items-center">
-                            <img src="http://drupal/themes/custom/b4subtheme/logo.svg" height="60" />
+                            <a href="/">
+                                <img src="http://drupal/themes/custom/b4subtheme/logo.svg" height="60" />
+                            </a>
                         </div>
                     </div>
                     <div className="col-3 col-md-auto p-0 text-right">
