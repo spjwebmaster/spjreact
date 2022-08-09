@@ -6,6 +6,7 @@ import {
     useParams,
   } from "react-router-dom";
   import Breadcrumb from "../../Components/Breadcrumb";
+  import Sidebar from "../../Components/Shared/Sidebar"
 
 function Staff(props){
 
@@ -17,10 +18,10 @@ function Staff(props){
     useEffect(() => {
         // code to run on component mount
         
-            fetch(`/jsonapi/node/bio?filter[field_role.meta.drupal_internal__target_id]=4?page[limit]=50&include=field_profile&jsonapi_include=1`)
+            fetch(`/jsonapi/node/bio?filter[field_role.meta.drupal_internal__target_id]=4&page[limit]=50&include=field_profile`)
                 .then(response=>response.json())
                 .then(data => {
-                    console.log(data)
+                    console.log("staff", data)
                     setData(data.data);
                     setIncluded(data.included);
                     
@@ -42,15 +43,17 @@ function Staff(props){
                
                     {(data? <div>
                     
-                    
-                      {data.map(item=>{
+                        
+                      {
+                      data.map(item=>{
 
-
-                        let body = (item.attributes.body? item.attributes.body.value: "");
+                        
+                        let body = (item.attributes.body ? item.attributes.body.value: "");
                         let profileId = item.relationships.field_profile.data.id;
                         let profileImage =  included.filter(t=>t.id == profileId);
                         console.log("profile", profileImage)
                         return(
+
                         <div key={item.id}>
 
                             <div className="row">
@@ -97,7 +100,9 @@ function Staff(props){
                             <hr />
                         </div>
                         )
-                      })}
+                      }
+                      )}
+                      
 
                     </div>: (
                         <div>
@@ -107,7 +112,7 @@ function Staff(props){
                     ))}
                 </div>
                 <div className="col-md-3">
-                    
+                <Sidebar location={location} />
                 </div>
             </div>
             

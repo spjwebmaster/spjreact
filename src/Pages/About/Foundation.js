@@ -8,33 +8,32 @@ import {
   import Breadcrumb from "../../Components/Breadcrumb";
   import Sidebar from "../../Components/Shared/Sidebar"
 
-function About(props){
+function Foundation(props){
 
     let params = useParams();
     let location = useLocation();
     const [data, setData] = useState();
+    const pathname = location.pathname;
 
-    console.log("about", params)
+    console.log("about", pathname)
     useEffect(() => {
         // code to run on component mount
-        
 
-           let basicPath = "/about/spj";
-            fetch(`/router/translate-path?path=${basicPath}`)
-                .then(response=>response.json())
-                .then(data => {
+        fetch(`/router/translate-path?path=${pathname}`)
+            .then(response=>response.json())
+            .then(data => {
 
-                    let uuid = data.entity.uuid;
-                    let newFetch = "/jsonapi/node/page/" + uuid;
+                let uuid = data.entity.uuid;
+                let newFetch = "/jsonapi/node/page/" + uuid;
 
-                    fetch(newFetch).then(resp=>resp.json()).then(data=>{
+                fetch(newFetch).then(resp=>resp.json()).then(data=>{
 
-                        setData(data.data) 
-                    })
-                    
+                    setData(data.data) 
                 })
+                    
+         })
         
-      }, []);
+      }, [pathname]);
 
       let breadData = [];
 
@@ -74,4 +73,4 @@ function About(props){
     )
 }
 
-export default About;
+export default Foundation;

@@ -1,12 +1,14 @@
 import React, { Component, useState, useEffect } from "react";
 import CoreFour from "../Components/Widgets/Home/CoreFour";
 import HomeCalendar from "../Components/Widgets/Home/HomeCalendar";
+import NewsHome from "../Components/Widgets/Home/NewsHome"
 
 import {
     useLocation,
     useNavigate,
     useParams,
   } from "react-router-dom";
+import News from "./News/News";
 
 function Home(){
     const [data, setData] = useState();
@@ -34,18 +36,21 @@ function Home(){
       }, []);
 
     return(
-        <div>Welcome
-            <br />
+        <div>
+            
             <CoreFour />
             <hr />
-            <div className="page_content">
+            <div className="page_content section">
                 {(data? <div>
                     <div dangerouslySetInnerHTML={{__html: data.attributes.body.value}} ></div> 
                 </div> : <div>Loading</div>)}
             </div>
             <hr />
             <HomeCalendar />
-            
+            <hr />
+            <div className="section newsHome">
+            <NewsHome limit="3" />
+            </div>
         </div>
     )
 }

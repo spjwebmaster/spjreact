@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "./Navigation";
 
 export default function Header (props){
+    console.log("header", props.menu)
     return (
         <header>
            <div className="bg-primary p-2 text-right text-white">Top</div>
@@ -20,7 +21,7 @@ export default function Header (props){
 
                     </div>
                     <div className="collapse navbar-collapse col-12 col-md-auto p-0">
-                        <Navigation />
+                        <Navigation type="full" menu={props.menu} />
                     </div>
                   
                     

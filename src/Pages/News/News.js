@@ -5,7 +5,7 @@ import {
     useNavigate,
     useParams,
   } from "react-router-dom";
-  import Breadcrumb from "../Components/Breadcrumb";
+  import Breadcrumb from "../../Components/Breadcrumb";
 
 function News(props){
 

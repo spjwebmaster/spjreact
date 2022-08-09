@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import Dates from "../../Shared/Dates"
 
 function HomeCalendar(){
     const [data, setData] = useState();
@@ -18,7 +19,7 @@ function HomeCalendar(){
 
 
     return (
-        <div className="coreFour">
+        <div className="calendarHome section">
             <h2>Let's Do This Together</h2>
             <p>
             Is your organization hosting an event you think would be of interest to journalists? 
@@ -31,40 +32,13 @@ function HomeCalendar(){
                 </div>
                 <div className="col-sm-10">
                     
-                
-               
+                <h4>Upcoming SPJ events</h4>
+                <Dates limit="5" list="home" />
 
-              
-                {(data? <div>
-                    <h4>Upcoming SPJ events</h4>
-                    <ul className="item-list">
-                    {data.cal.map(cal=>{
+                <h4>General events</h4>
+                <Dates limit="5" list="homegen" />
+                         
 
-                        return(
-                            <li key={cal.link}>
-                                <a href={cal.link} target="_blank">{cal.title}</a>
-                            </li>
-                        )
-                    })}
-                    </ul>
-
-                    <h4>General events</h4>
-                    <ul className="item-list">
-                    {data.gen.map(gen=>{
-
-                        return(
-                            <li key={gen.link}>
-                                <a href={gen.link} target="_blank">{gen.title}</a>
-                            </li>
-                        )
-                    })}
-                    </ul>
-
-     
-
-
-
-                </div> : <div>Loading</div>)}
                 </div>
             </div>
             

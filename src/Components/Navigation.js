@@ -1,6 +1,18 @@
 import React from "react";
 
 export default function Navigation (props){
+
+    const type = props.type;
+    const menu = props.menu;
+    let allLinks = [];
+    
+    if(menu){
+        console.log("nav menu", menu)
+        menu.forEach(function(m){
+            console.log(m.attributes.title, m.attributes.url)
+        })
+    }
+
     return (
        
           

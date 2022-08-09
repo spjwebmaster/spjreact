@@ -1,5 +1,6 @@
 import React from "react";
 import Navigation from "./Navigation";
+import FooterDates from "./Widgets/FooterDates"
 
 export default function Footer (props){
     return (
@@ -8,8 +9,20 @@ export default function Footer (props){
             <nav>
             <div className="container"> 
                 Footer
-                <br />
-                <Navigation />
+                <hr />
+                <div className="row">
+                    <div className="col-sm-4">
+                       <h3>Site Navigation</h3>
+                        <Navigation type="basic" />
+                    </div>
+                    <div className="col-sm-4">
+                        <FooterDates />
+                    </div>
+                    <div className="col-sm-4">
+                        Ad
+                    </div>
+                </div>
+                
             </div>
             </nav>
         </footer>
