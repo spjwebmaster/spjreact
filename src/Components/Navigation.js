@@ -4,13 +4,21 @@ export default function Navigation (props){
 
     const type = props.type;
     const menu = props.menu;
-    let allLinks = [];
+
     
     if(menu){
-        console.log("nav menu", menu)
+        //console.log("nav menu", menu)
         menu.forEach(function(m){
-            console.log(m.attributes.title, m.attributes.url)
-        })
+            //console.log(m.attributes.title, m.attributes.url);
+            let urls = m.attributes.url.split("/");
+            
+           
+            //console.log("splits", urls);
+            
+
+
+        });
+        console.log("menus", menu)
     }
 
     return (

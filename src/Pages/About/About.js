@@ -7,19 +7,25 @@ import {
   } from "react-router-dom";
   import Breadcrumb from "../../Components/Breadcrumb";
   import Sidebar from "../../Components/Shared/Sidebar"
+  import Committees from "../../Components/Widgets/About/Committees";
 
 function About(props){
 
     let params = useParams();
     let location = useLocation();
     const [data, setData] = useState();
+    const pathname = location.pathname;
 
-    console.log("about", params)
+    
+    console.log("about path", pathname)
     useEffect(() => {
         // code to run on component mount
         
+            let basicPath = pathname;
+            if(basicPath=="/about/" || basicPath=="/about"){
+                basicPath = "/about/spj";
+            }
 
-           let basicPath = "/about/spj";
             fetch(`/router/translate-path?path=${basicPath}`)
                 .then(response=>response.json())
                 .then(data => {
@@ -36,12 +42,13 @@ function About(props){
         
       }, []);
 
-      let breadData = [];
+     
+     
 
     return (
         <div>
-            <Breadcrumb  />
-            <h1>About</h1>
+      
+
             
 
             <div className="row">
@@ -53,7 +60,7 @@ function About(props){
                     
                         <br />
                         
-                        <h2>{data.attributes.title}</h2>
+                        <h1>{data.attributes.title}</h1>
                         
                         <div dangerouslySetInnerHTML={{__html: data.attributes.body.value}}></div>
 
@@ -63,9 +70,14 @@ function About(props){
                         </div>
                     
                     ))}
+
+                    
+                    <Widget pathname={pathname}/>
                 </div>
+                 
+
                 <div className="col-md-3">
-                    <Sidebar location={location} />
+                    <Sidebar location={location} menu={props.menu} />
                 </div>
             </div>
             
@@ -73,5 +85,19 @@ function About(props){
         </div>
     )
 }
+
+const Widget = function(pathname){
+
+
+    console.log("pathname",pathname.pathname)
+    const widgetList = {
+        "/about/committees": <Committees />,
+    }
+
+
+    return widgetList[pathname.pathname];
+    
+    
+  }
 
 export default About;

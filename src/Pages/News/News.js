@@ -71,6 +71,10 @@ function News(props){
             <Breadcrumb  />
             <h1>News</h1>
             
+
+            <div className="row">
+                <div className="col-md-9">
+
             {(newsData? <div>
                
                
@@ -102,6 +106,13 @@ function News(props){
                 </div>
              
              ))}
+             </div>
+                <div className="col-md-3">
+                    News<br />
+                    Events<br />
+                    Conferences
+                </div>
+            </div>
             
 
         </div>

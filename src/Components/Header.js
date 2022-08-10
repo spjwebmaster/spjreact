@@ -2,10 +2,12 @@ import React from "react";
 import Navigation from "./Navigation";
 
 export default function Header (props){
-    console.log("header", props.menu)
+
     return (
         <header>
-           <div className="bg-primary p-2 text-right text-white">Top</div>
+           <div className="bg-spjblue p-2 text-right text-white topNav">
+            Top
+            </div>
            <nav className="navbar navbar-expand-lg navbar-light text-dark">
             
                 <div className="container row mx-auto">

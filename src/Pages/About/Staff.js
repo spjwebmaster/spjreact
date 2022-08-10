@@ -33,7 +33,7 @@ function Staff(props){
 
     return (
         <div>
-            <Breadcrumb  />
+            
             <h1>SPJ Staff</h1>
             
 

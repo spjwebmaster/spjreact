@@ -8,14 +8,14 @@ import {
   import Breadcrumb from "../../Components/Breadcrumb";
   import Sidebar from "../../Components/Shared/Sidebar"
 
-function Foundation(props){
+function Ethics(props){
 
     let params = useParams();
     let location = useLocation();
     const [data, setData] = useState();
     const pathname = location.pathname;
 
-    console.log("about", pathname)
+
     useEffect(() => {
         // code to run on component mount
 
@@ -39,8 +39,8 @@ function Foundation(props){
 
     return (
         <div>
-          
-            <h1>About</h1>
+            <Breadcrumb  />
+            <h1>Ethics</h1>
             
 
             <div className="row">
@@ -64,7 +64,43 @@ function Foundation(props){
                     ))}
                 </div>
                 <div className="col-md-3">
-                    <Sidebar location={location} menu={props.menu} />
+               
+
+                <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+          <a href="/ethics/codeofethics" className="nav-item nav-link dropdown-toggle" data-drupal-link-system-path="node/174">Code of Ethics</a>
+      </li>
+
+                    <li className="nav-item">
+          <a href="/ethics/casestudies" className="nav-item nav-link" data-drupal-link-system-path="node/301">Ethics Case Studies</a>
+      </li>
+
+                    <li className="nav-item">
+          <a href="/ethics/committee" className="nav-item nav-link" data-drupal-link-system-path="node/308">Ethics Committee</a>
+      </li>
+
+                    <li className="nav-item">
+          <a href="/ethics/ethicsfaq" className="nav-item nav-link" data-drupal-link-system-path="node/304">Ethics FAQ</a>
+      </li>
+
+                    <li className="nav-item">
+          <a href="/ethics/hotline" className="nav-item nav-link" data-drupal-link-system-path="node/309">Ethics Hotline</a>
+      </li>
+
+                    <li className="nav-item">
+          <a href="/ethics/ethicsweek" className="nav-item nav-link dropdown-toggle" data-drupal-link-system-path="node/4127">Ethics Week</a>
+      </li>
+
+                    <li className="nav-item">
+          <a href="/ethics/book" className="nav-item nav-link" data-drupal-link-system-path="node/300">Media Ethics Book</a>
+      </li>
+
+                    <li className="nav-item">
+          <a href="/ethics/positionpapers" className="nav-item nav-link" data-drupal-link-system-path="node/299">Position Papers</a>
+      </li>
+
+        </ul>
+        
                 </div>
             </div>
             
@@ -73,4 +109,4 @@ function Foundation(props){
     )
 }
 
-export default Foundation;
+export default Ethics;
