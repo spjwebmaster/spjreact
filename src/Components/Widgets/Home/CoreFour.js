@@ -14,7 +14,7 @@ function CoreFour(){
             fetch(`/jsonapi/node/what_we_do`)
                 .then(response=>response.json())
                 .then(data => {
-                    console.log("basic data",data.data);
+
                     setData(data.data)
                 })
         

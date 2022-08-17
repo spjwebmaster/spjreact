@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import Header from  "./Header";
 import Footer from  "./Footer";
-import Banner from "./Banner";
+import Banner from "./Shared/Banner";
 import ScrollToTop from "react-scroll-to-top";
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import {
@@ -25,7 +25,7 @@ function Bread(props){
             let menuTitleNode = menu.filter(t=>t.attributes.url == breadcrumb.key);
             let menuTitle = (menuTitleNode.length? menuTitleNode[0].attributes.title: name);
             
-            console.log("bread: ", breadcrumb.key, name, menuTitleNode[0]);
+            //console.log("bread: ", breadcrumb.key, name, menuTitleNode[0]);
             return(
               <li className="nav-item" key={breadcrumb.key}>
                 <a className="nav-link" href={breadcrumb.key}>
@@ -43,19 +43,19 @@ const Layout = (props) => {
   const  menu = props.menu;
   let params = useParams();
   let location = useLocation();
-  //console.log("layout", menu);
+  console.log("layout props", props)
 
   
   return (
     <div className="wrapper">
-      <Header menu={menu} />
+      <Header menu={menu} page={props.page} />
       <Banner />
       <div className="wrapper mt-4 container">
         <Bread menu={menu} />
       <Outlet menu={menu} />
       </div>
       <ScrollToTop smooth />
-      <Footer menu={menu} />
+      <Footer menu={menu} page={props.page} />
      
     </div>
   )

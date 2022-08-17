@@ -5,7 +5,7 @@ import {
     useNavigate,
     useParams,
   } from "react-router-dom";
-  import Breadcrumb from "../../Components/Breadcrumb";
+
 
 function News(props){
 
@@ -68,7 +68,7 @@ function News(props){
 
     return (
         <div>
-            <Breadcrumb  />
+  
             <h1>News</h1>
             
 
@@ -87,7 +87,7 @@ function News(props){
                 <div dangerouslySetInnerHTML={{__html: newsData.attributes.body.value}}></div>
 
              </div>: (
-                <div>list
+                <div>
                 {(news? news.map(item=> {
 
                     let summary = item.attributes.body.value;

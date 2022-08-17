@@ -16,17 +16,22 @@ import Events from './Pages/News/Events';
 import Ethics from './Pages/Ethics/Ethics';
 import About from './Pages/About/About';
 import Staff from './Pages/About/Staff';
+import Committees from './Pages/About/Committees';
 import Foundation from './Pages/About/Foundation';
 import NotFound from './Pages/NotFound';
 import Search from './Pages/Search';
+import Donate from './Pages/Donate';
 import "./App.css";
 
 function App() {
 
+
   const [menu, setMenu] = useState([]);
+  const [page, setPage] = useState("/");
+  
   useEffect(() => {
     // code to run on component mount
-
+   
     fetch('/jsonapi/menu_items/main')
         .then(response=>response.json())
         .then(data => {
@@ -42,7 +47,7 @@ function App() {
      
      <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout menu={menu} />}>
+        <Route path="/" element={<Layout menu={menu} page={page} />}>
           <Route path="*" element={<NotFound />} />
           
           <Route index element={<Home />} />
@@ -52,12 +57,14 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/news/:title" element={<News />} />
           <Route path="/news/events" element={<Events />} />
-
+          <Route path="/donate" element={<Donate />} />
           <Route path="/news/events/:event" element={<Events />} />
           <Route path="/ethics" element={<Ethics />} />
           <Route path="/ethics/:page/*" element={<Ethics />} />
           <Route path="/about" element={<About menu={menu} />} />
           <Route path="/about/:page/*" element={<About menu={menu} />} />
+          <Route path="/about/committees" element={<Committees menu={menu} />} />
+          <Route path="/about/committees/:term" element={<Committees menu={menu} />} />
           <Route path="/about/spj/staff" element={<Staff  menu={menu}/>} />
           
         </Route>

@@ -13,7 +13,7 @@ export default function Footer (props){
                 <div className="row">
                     <div className="col-sm-4">
                        <h3>Site Navigation</h3>
-                        <Navigation type="basic" />
+                        <Navigation type="basic" page={props.page} />
                     </div>
                     <div className="col-sm-4">
                         <FooterDates />

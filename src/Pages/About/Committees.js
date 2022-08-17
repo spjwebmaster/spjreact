@@ -5,25 +5,31 @@ import {
     useNavigate,
     useParams,
   } from "react-router-dom";
+  import Breadcrumb from "../../Components/Breadcrumb";
 
-  import Sidebar from "../../Components/Shared/Sidebar"
-  import CommitteList from "../../Components/Widgets/About/CommitteeList";
+  import CommitteeList from "../../Components/Widgets/About/CommitteeList";
+  import CommitteeDetail from "../../Components/Widgets/About/CommitteeDetail";
 
-function About(props){
+function Committees(props){
 
     let params = useParams();
     let location = useLocation();
     const [data, setData] = useState();
+    const [committee, setCommittee] = useState([])
+    const [included, setIncluded] = useState([])
     const pathname = location.pathname;
+    console.log("params",params, props)
 
     useEffect(() => {
         // code to run on component mount
         
             let basicPath = pathname;
-            if(basicPath=="/about/" || basicPath=="/about"){
-                basicPath = "/about/spj";
-            }
+            basicPath = "/about/committees/"
+            if(params.term){
+                console.log("term",params.term);
 
+            } else {
+            
             fetch(`/router/translate-path?path=${basicPath}`)
                 .then(response=>response.json())
                 .then(data => {
@@ -37,6 +43,7 @@ function About(props){
                     })
                     
                 })
+            }
         
       }, []);
 
@@ -47,10 +54,8 @@ function About(props){
         <div>
       
 
-            
-
             <div className="row">
-                <div className="col-md-9">
+                <div className="col">
 
                
                     {(data? <div>
@@ -63,19 +68,20 @@ function About(props){
                         <div dangerouslySetInnerHTML={{__html: data.attributes.body.value}}></div>
 
                     </div>: (
-                        <div>
-                            Loading
-                        </div>
+                        ""
                     
                     ))}
 
                     
-                    <Widget pathname={pathname}/>
+                    {(params.term ? <div>
+                            <CommitteeDetail term={params.term} />
+                        </div> : <CommitteeList />)}
+                    
                 </div>
                  
 
                 <div className="col-md-3">
-                    <Sidebar location={location} menu={props.menu} />
+                    
                 </div>
             </div>
             
@@ -84,18 +90,5 @@ function About(props){
     )
 }
 
-const Widget = function(pathname){
 
-
-    console.log("pathname",pathname.pathname)
-    const widgetList = {
-        "/about/committees": <CommitteList />,
-    }
-
-
-    return widgetList[pathname.pathname];
-    
-    
-  }
-
-export default About;
+export default Committees;

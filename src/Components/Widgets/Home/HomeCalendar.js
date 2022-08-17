@@ -11,7 +11,7 @@ function HomeCalendar(){
             fetch(`/calendarjson/home`)
                 .then(response=>response.json())
                 .then(data => {
-                    console.log("info",data.data);
+  
                     setData(data.data)
                 })
         

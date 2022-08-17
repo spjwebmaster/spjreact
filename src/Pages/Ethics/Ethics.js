@@ -5,8 +5,9 @@ import {
     useNavigate,
     useParams,
   } from "react-router-dom";
-  import Breadcrumb from "../../Components/Breadcrumb";
+
   import Sidebar from "../../Components/Shared/Sidebar"
+  
 
 function Ethics(props){
 
@@ -39,7 +40,7 @@ function Ethics(props){
 
     return (
         <div>
-            <Breadcrumb  />
+
             <h1>Ethics</h1>
             
 
@@ -64,6 +65,11 @@ function Ethics(props){
                     ))}
                 </div>
                 <div className="col-md-3">
+
+
+                <Sidebar location={location} menu={props.menu} />
+
+                <hr />
                
 
                 <ul className="navbar-nav mr-auto">

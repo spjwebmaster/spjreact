@@ -8,7 +8,7 @@ function NewsHome(props){
 
 
     return (
-        <div className="section newsHome p-5 alignfull bg-danger text-white">
+        <div className="section newsHome p-5 alignfull bg-secondary text-white">
             <div className="container">
             <h2>SPJ News</h2>
                 <News limit="3" />

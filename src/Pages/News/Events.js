@@ -1,7 +1,7 @@
 
 import Dates from "../../Components/Shared/Dates";
 import React, { Component, useState, useEffect } from "react";
-import Breadcrumb from "../../Components/Breadcrumb";
+
 
 export default function Events(props){
     const [data, setData] = useState();
@@ -21,7 +21,7 @@ export default function Events(props){
 
     return(
         <div>
-            <Breadcrumb  />
+           
            <h1>Let's do this together</h1>
            {(data? <div>
                     <ul className="widget-list">

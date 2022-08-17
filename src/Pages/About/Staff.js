@@ -7,6 +7,7 @@ import {
   } from "react-router-dom";
   import Breadcrumb from "../../Components/Breadcrumb";
   import Sidebar from "../../Components/Shared/Sidebar"
+  import Bio from "../../Components/Shared/Bio"
 
 function Staff(props){
 
@@ -21,7 +22,7 @@ function Staff(props){
             fetch(`/jsonapi/node/bio?filter[field_role.meta.drupal_internal__target_id]=4&page[limit]=50&include=field_profile`)
                 .then(response=>response.json())
                 .then(data => {
-                    console.log("staff", data)
+
                     setData(data.data);
                     setIncluded(data.included);
                     
@@ -51,53 +52,14 @@ function Staff(props){
                         let body = (item.attributes.body ? item.attributes.body.value: "");
                         let profileId = item.relationships.field_profile.data.id;
                         let profileImage =  included.filter(t=>t.id == profileId);
-                        console.log("profile", profileImage)
+                        
                         return(
 
                         <div key={item.id}>
 
-                            <div className="row">
-                                <div className="col-md-9">
+                            <Bio item={item} profile={profileImage} />
 
-                                    
-                                    <h2>{item.attributes.title}</h2>
-                                    <strong>{item.attributes.field_title}</strong>
-                                    <div>
-                                        
-                                        {item.relationships.field_role.data.map(role=>{
-                                            return(
-                                                <span key={role.id} className="badge bg-info">
-                                                    Role id: {role.meta.drupal_internal__target_id}
-                                                </span> 
-                                                
-                                            )
-                                        })}
-                                        <span>&nbsp;</span>
-
-                                        {item.attributes.field_email? 
-                                            <span className="badge bg-dark">
-                                                <a href={`mailto:${item.attributes.field_email}`} className="text-white">
-                                                    {item.attributes.field_email}
-                                                </a>
-                                            </span>: ""}
-
-                                    <span>&nbsp;</span>
-                                        {item.attributes.field_phone_number? 
-                                        <span className="badge bg-warning">
-                                            {item.attributes.field_phone_number}
-                                            </span>: ""}
-                                    </div>
-
-                                    <div dangerouslySetInnerHTML={{__html: body}}></div>
-                                </div>
-                                <div className="col-md-3">
-                                
-                                    <img src={`/sites/default/files/styles/media_library/public/${profileImage[0].attributes.name}`} className="bio-profile" width="100%" />
-                                            <br />
-                                    {profileImage[0].attributes.name}
-                                 </div>
-                            </div>
-                            <hr />
+                            
                         </div>
                         )
                       }

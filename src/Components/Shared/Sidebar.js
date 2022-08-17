@@ -7,8 +7,7 @@ export default function Sidebar (props){
     const [submenus, setSubmenus] = useState([]);
     const path = props.location.pathname;
     const menu = props.menu;
-    console.log("path", path)
-    console.log("sidebar", menu, path)
+
     
     useEffect(() => {
         // code to run on component mount
@@ -31,23 +30,21 @@ export default function Sidebar (props){
         }
 
 
-        console.log("sidebar splits", splits,  whichLevel, "|", splits[(splits.length-1)])
+    
         let base = menu.filter(t=>t.attributes.url == "/" + whichLevel);
         if(base){
         let baseId = base[0].id;
-        console.log("base id", baseId)
+     
 
-        console.log("getting ", "/" + whichLevel, base, menu)
+     
         if(base.length){
             
     
             let submenus = menu.filter(function(m){ return m.attributes.parent==baseId})
             setSubmenus(submenus);
     
-            console.log("sidebar",submenus);
-            submenus.forEach(function(el){
-                console.log(el.attributes.url)
-            })
+            
+           
         }
         }
         }

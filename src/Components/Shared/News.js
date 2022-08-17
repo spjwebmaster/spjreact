@@ -9,14 +9,11 @@ function News(props){
     useEffect(() => {
         // code to run on component mount
 
-          
-            
-         
-            console.log("else")
+        
             fetch(`/jsonapi/node/news_item?sort=-field_active_date&page[limit]=${limit}`)
                 .then(response=>response.json())
                 .then(data => {
-                    console.log("basic data",data.data);
+
                     setNews(data.data); 
                 })
 

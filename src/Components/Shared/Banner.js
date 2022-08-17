@@ -43,12 +43,13 @@ function Banner(){
         // code to run on component mount
         setRandom(getRandomInt(0,3))
         
-            console.log("banner params",location, "test:", testPath)
+            //console.log("banner params",location, "test:", testPath)
 
             fetch(`/jsonapi/node/slider_slide?filter[field_page_path]=${testPath}&include=field_slider_image`)
                 .then(response=>response.json())
                 .then(data => {
-                    console.log("banner",data);
+
+
                     if(data.data.length){
                         setData(data.data)
                     }
@@ -71,7 +72,7 @@ function Banner(){
 
                 let imageId = dat.relationships.field_slider_image.data.id;
                 let imageInfo = included.filter(t=>t.id == imageId);
-                console.log("banner image", imageInfo, dat)
+     
                 
                 return(
                     
