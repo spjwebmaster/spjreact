@@ -43,7 +43,7 @@ const Layout = (props) => {
   const  menu = props.menu;
   let params = useParams();
   let location = useLocation();
-  console.log("layout props", props)
+
 
   
   return (

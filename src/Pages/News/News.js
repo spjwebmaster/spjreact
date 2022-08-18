@@ -108,9 +108,7 @@ function News(props){
              ))}
              </div>
                 <div className="col-md-3">
-                    News<br />
-                    Events<br />
-                    Conferences
+                   Load sibling menu
                 </div>
             </div>
             

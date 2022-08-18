@@ -5,17 +5,17 @@ import {
     useNavigate,
     useParams,
   } from "react-router-dom";
-
+  import Breadcrumb from "../../Components/Breadcrumb";
   import Sidebar from "../../Components/Shared/Sidebar"
 
-function Explore(props){
+function NewsEvents(props){
 
     let params = useParams();
     let location = useLocation();
     const [data, setData] = useState();
     const pathname = location.pathname;
 
-
+    console.log("about", pathname)
     useEffect(() => {
         // code to run on component mount
 
@@ -35,14 +35,13 @@ function Explore(props){
         
       }, [pathname]);
 
+      let breadData = [];
 
     return (
         <div>
-
-
-
+          
             <div className="row">
-                <div className="col-sm-9">
+                <div className="col-md-9">
 
                
                     {(data? <div>
@@ -50,9 +49,9 @@ function Explore(props){
                     
                         <br />
                         
-                        <h1>{data.attributes.title}</h1>
+                        <h2>{data.attributes.title}</h2>
                         
-                        <div dangerouslySetInnerHTML={{__html: (data.attributes.body? data.attributes.body.value: "")}}></div>
+                        <div dangerouslySetInnerHTML={{__html: data.attributes.body.value}}></div>
 
                     </div>: (
                         <div>
@@ -60,17 +59,10 @@ function Explore(props){
                         </div>
                     
                     ))}
-                
-                
-                  
-
                 </div>
-                <div className="col-sm-3">
+                <div className="col-md-3">
                     <Sidebar location={location} menu={props.menu} />
                 </div>
-
-                
-                
             </div>
             
 
@@ -78,4 +70,4 @@ function Explore(props){
     )
 }
 
-export default Explore;
+export default NewsEvents;

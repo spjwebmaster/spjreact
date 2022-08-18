@@ -7,7 +7,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export default function Header (props){
 
-    console.log("header props", props)
+   
     return (
         <header className="fixed-top mainHeader">
            <div className="bg-spjblue p-2 text-right text-white topNav">

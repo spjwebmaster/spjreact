@@ -8,6 +8,13 @@ body {
   margin-left: calc(50% - 50vw);
 }
 
+.alignfull.wp-block-cloudblocks-g-section{
+  width: 100%;
+  margin-left: auto;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+
 .section {
   margin-top: 5em;
   margin-bottom: 5em;

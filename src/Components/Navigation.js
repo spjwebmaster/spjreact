@@ -27,7 +27,7 @@ export default function Navigation (props){
         // code to run on component mount
             const thisPageItem = (menu? menu.filter(t=>t.attributes.url==location.pathname): []);
             setThisPage(thisPageItem);
-            console.log("nav props", thisPageItem)
+            
     }, [menu]);
 
 
@@ -35,15 +35,6 @@ export default function Navigation (props){
        
           
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-
-           {(thisPage && menu? mainPages.map(men=> {
-
-                let filter = menu.filter(t=>t.attributes.url==men);
-                console.log("filter", men, filter)
-                
-                
-           }) : "")}
 
 
             <li className="nav-item">
@@ -63,7 +54,7 @@ export default function Navigation (props){
                 <a href="/explore" className="nav-link">Explore SPJ</a>
             </li>
             <li className="nav-item">
-                <a href="/news" className="nav-link">News &amp; Events</a>
+                <a href="/news-events" className="nav-link">News &amp; Events</a>
             </li>
         </ul>
               

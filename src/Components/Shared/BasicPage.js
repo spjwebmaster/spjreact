@@ -6,16 +6,17 @@ import {
     useParams,
   } from "react-router-dom";
 
-  import Sidebar from "../../Components/Shared/Sidebar"
+  import Sidebar from "./Sidebar"
 
-function Explore(props){
+function BasicPage(props){
 
     let params = useParams();
     let location = useLocation();
     const [data, setData] = useState();
     const pathname = location.pathname;
+    const widgets = props.widget;
 
-
+    console.log("basicpage:", pathname)
     useEffect(() => {
         // code to run on component mount
 
@@ -35,14 +36,13 @@ function Explore(props){
         
       }, [pathname]);
 
+      let breadData = [];
 
     return (
         <div>
-
-
-
+          
             <div className="row">
-                <div className="col-sm-9">
+                <div className="col-md-9">
 
                
                     {(data? <div>
@@ -52,7 +52,7 @@ function Explore(props){
                         
                         <h1>{data.attributes.title}</h1>
                         
-                        <div dangerouslySetInnerHTML={{__html: (data.attributes.body? data.attributes.body.value: "")}}></div>
+                        <div dangerouslySetInnerHTML={{__html: data.attributes.body.value}}></div>
 
                     </div>: (
                         <div>
@@ -60,17 +60,12 @@ function Explore(props){
                         </div>
                     
                     ))}
-                
-                
-                  
 
+                    {(widgets? widgets: "")}
                 </div>
-                <div className="col-sm-3">
+                <div className="col-md-3">
                     <Sidebar location={location} menu={props.menu} />
                 </div>
-
-                
-                
             </div>
             
 
@@ -78,4 +73,4 @@ function Explore(props){
     )
 }
 
-export default Explore;
+export default BasicPage;
