@@ -7,7 +7,7 @@ export default function Sidebar (props){
     const [submenus, setSubmenus] = useState([]);
     const path = props.location.pathname;
     const menu = props.menu;
-    console.log(path, menu)
+    //console.log(path, menu)
     
     useEffect(() => {
         // code to run on component mount

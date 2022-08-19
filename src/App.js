@@ -15,6 +15,8 @@ import FAQ from './Components/Shared/FAQ';
 import Conferences from './Pages/Conferences';
 import News from './Pages/News/News';
 import Events from './Pages/News/Events';
+import Awards from './Pages/Explore/Awards/Awards';
+
 
 import Explore from './Pages/Explore/Explore';
 import About from './Pages/About/About';
@@ -67,6 +69,9 @@ function App() {
           <Route path="/ethics/:page/*" element={<BasicPage  menu={menu} />} />
           <Route path="/ethics/ethicsfaq" element={<BasicPage  menu={menu} widget={<FAQ view="ethicsfaq" />} />} />
           
+          <Route path="/awards" element={<Awards  menu={menu}/>} />
+          <Route path="/awards/:category" element={<Awards  menu={menu}/>} />
+          <Route path="/awards/:category/:code" element={<Awards  menu={menu}/>} />
           <Route path="/explore" element={<Explore  menu={menu}/>} />
           <Route path="/about" element={<About menu={menu} />} />
           <Route path="/about/:page/*" element={<About menu={menu} />} />
