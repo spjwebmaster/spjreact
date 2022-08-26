@@ -7,7 +7,8 @@ export default function Sidebar (props){
     const [submenus, setSubmenus] = useState([]);
     const path = props.location.pathname;
     const menu = props.menu;
-    //console.log(path, menu)
+    const widget = (props.widgets? props.widget: "");
+    console.log("sidebar props", path, props)
     
     useEffect(() => {
         // code to run on component mount
@@ -32,11 +33,9 @@ export default function Sidebar (props){
 
         
             let base = menu.filter(t=>t.attributes.url == "/" + whichLevel);
-            if(base){
+            if(base[0]){
                 let baseId = base[0].id;
-        
-
-        
+                
                 if(base.length){
                     
             
@@ -56,7 +55,7 @@ export default function Sidebar (props){
    
     return (
         <aside>
-          <h3>Sub Nav</h3>
+
           <nav className="nav-side">
             
             
@@ -64,6 +63,7 @@ export default function Sidebar (props){
                 {submenus.map(s=>{
 
                     let activeClass= (s.attributes.url==path? "active": "");
+                    if(s.id){
                     return(
                         <li key={s.id} className={`nav-item ${activeClass}`}>
                             <a href={s.attributes.url} className={`nav-link ${activeClass}`}>
@@ -71,6 +71,7 @@ export default function Sidebar (props){
                             </a>
                         </li>
                     )
+                    }
                 })}
             </ul> : ""}
             
@@ -78,6 +79,10 @@ export default function Sidebar (props){
           
             
           </nav>
+
+          <hr />
+                {(props.widgets? props.widgets: "")}
+
            
         </aside>
     );

@@ -1,7 +1,8 @@
+import React, { Component, useState, useEffect, Suspense } from "react";
 import { Outlet, Link } from "react-router-dom";
 import Header from  "./Header";
 import Footer from  "./Footer";
-import Banner from "./Shared/Banner";
+
 import ScrollToTop from "react-scroll-to-top";
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import {
@@ -10,12 +11,15 @@ import {
   useParams,
 } from "react-router-dom";
 
+const Banner = React.lazy(() => import("./Shared/Banner"));
+
 function Bread(props){
   const breadcrumbs = useBreadcrumbs();
   const menu = props.menu;
+  
 
   return (
-    <div className="navbar breadcrumb bg-light me-auto mb-2 mb-lg-0">
+    <div className={`navbar breadcrumb bg-light me-auto mb-2 mb-lg-0`}>
       <ul className="navbar-nav">
         {breadcrumbs.map(({ breadcrumb }) => {
 
@@ -43,16 +47,27 @@ const Layout = (props) => {
   const  menu = props.menu;
   let params = useParams();
   let location = useLocation();
+  let pathFull = location.pathname.replaceAll("/", "");
+  const [menuOpen, setMenuOpen] = useState(false)
 
-
+  if(pathFull==""){
+    pathFull="home";
+  }
   
+  const menuclick = function(){
+    setMenuOpen(!menuOpen);
+  }
+
   return (
-    <div className="wrapper">
-      <Header menu={menu} page={props.page} />
-      <Banner />
+    <div className={`wrapper ${pathFull}`}>
+      <Header menu={menu} page={props.page} menuopen={menuOpen} menuclick={menuclick} />
+      <Suspense fallback={<p>loading...</p>}>
+       <Banner />
+     </Suspense>
+      
       <div className="wrapper mt-4 container">
         <Bread menu={menu} />
-      <Outlet menu={menu} />
+        <Outlet menu={menu} />
       </div>
       <ScrollToTop smooth />
       <Footer menu={menu} page={props.page} />

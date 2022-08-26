@@ -8,6 +8,9 @@ import {
 
   import Sidebar from "../../Components/Shared/Sidebar"
   import CommitteList from "../../Components/Widgets/About/CommitteeList";
+  import Block from "../../Components/Shared/Block";
+  import Spjjobs from "../../Components/Widgets/About/Spjjobs";
+  import DocumentationList from "../../Components/Widgets/About/DocumentationList";
 
 function About(props){
 
@@ -46,9 +49,6 @@ function About(props){
     return (
         <div>
       
-
-            
-
             <div className="row">
                 <div className="col-md-9">
 
@@ -75,7 +75,7 @@ function About(props){
                  
 
                 <div className="col-md-3">
-                    <Sidebar location={location} menu={props.menu} />
+                    <Sidebar location={location} menu={props.menu} widgets={<SidebarWidget pathname={pathname} />} />
                 </div>
             </div>
             
@@ -87,15 +87,23 @@ function About(props){
 const Widget = function(pathname){
 
 
-    console.log("pathname",pathname.pathname)
     const widgetList = {
         "/about/committees": <CommitteList />,
+        "/about/jobs": <Block id="43" title="External Jobs" />,
+        "/about/documentation": <DocumentationList />
     }
 
 
     return widgetList[pathname.pathname];
     
     
-  }
+}
+const SidebarWidget = function(pathname){
+    const widgetList = {
+        "/about/jobs": <Spjjobs />
+    }
+
+    return widgetList[pathname.pathname];
+}
 
 export default About;

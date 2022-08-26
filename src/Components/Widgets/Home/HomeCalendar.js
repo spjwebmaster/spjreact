@@ -26,11 +26,11 @@ function HomeCalendar(){
                 Add it to our calendar!
             </p>
             <div className="row">
-                <div className="col-sm-2">
+                <div className="col-lg-2 col-md-4 mb-4">
                     <img src="https://drupal.spjnetwork.org/sites/default/files/2022-04/t-spjheart-teal.jpg" width="100%" />
 
                 </div>
-                <div className="col-sm-10">
+                <div className="col-lg-10 col-md-8">
                     
                 <h4>Upcoming SPJ events</h4>
                 <Dates limit="5" list="home" />

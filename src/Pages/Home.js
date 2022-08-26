@@ -5,6 +5,7 @@ import NewsHome from "../Components/Widgets/Home/NewsHome"
 
 import Related from "../Components/Shared/Related";
 import Block from "../Components/Shared/Block";
+import Feeds from "../Components/Shared/Feeds";
 
 import {
     useLocation,
@@ -66,6 +67,17 @@ function Home(){
 
             <hr />
             <Related />
+
+            <hr />
+
+            <div className="row">
+                <div className="col">
+                    <Feeds type="JT" path="/" />
+                </div>
+                <div className="col">
+                    <Feeds type="Quill" path="/" />
+                </div>
+            </div>
         </div>
     )
 }

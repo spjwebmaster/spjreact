@@ -21,7 +21,7 @@ function List(props){
             fetch(ajaxUrl)
                 .then(response=>response.json())
                 .then(data => {
-                    console.log("list data", data)
+                    console.log(ajaxUrl,"list data", data)
                     setData(data.data); 
                     setIncluded(data.included)
                 })
@@ -37,15 +37,18 @@ function List(props){
         {(data? <div>
 
             {data.map(item=>{
-                const mediaId = item.relationships.field_donation_logo.data.id;
+                const mediaId = (includeField!=""? (item.relationships[includeField]? item.relationships[includeField].data.id: null): null);
                 const mediaItem = (included? included.filter(t=>t.id==mediaId): null);
-                console.log("mediaItem", mediaId, included)
+                
+                const anchorLink = (item.attributes.path? item.attributes.path.alias: item.attributes.field_path);
+
+                console.log("anchorLink", anchorLink);
                 return(
                     <div key={item.id}>
                        
                         <div className="row">
                             <div className="col">
-                            <h2>{item.attributes.title}</h2>
+                            <h2><a href={anchorLink}>{item.attributes.title}</a></h2>
                                 <div dangerouslySetInnerHTML={{__html: item.attributes.body.processed}}></div>
                             </div>
                             

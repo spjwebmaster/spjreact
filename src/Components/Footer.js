@@ -8,17 +8,16 @@ export default function Footer (props){
             <hr />
             <nav>
             <div className="container"> 
-                Footer
-                <hr />
+
                 <div className="row">
-                    <div className="col-sm-4">
+                    <div className="col-lg-4 col-md-6">
                        <h3>Site Navigation</h3>
                         <Navigation type="basic" page={props.page} />
                     </div>
-                    <div className="col-sm-4">
+                    <div className="col-lg-4 col-md-6">
                         <FooterDates />
                     </div>
-                    <div className="col-sm-4">
+                    <div className="col-lg-4 col-md-6">
                         Ad
                     </div>
                 </div>

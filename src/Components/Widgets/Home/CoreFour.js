@@ -48,7 +48,7 @@ function CoreFour(){
 
 
                     return (
-                        <div key={item.id} className="col-sm-3">
+                        <div key={item.id} className="col-lg-3 col-md-6 mb-4">
                             <span className="coreFourIcon">
         
                                {retClass}

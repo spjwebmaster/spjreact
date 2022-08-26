@@ -33,14 +33,26 @@ header .navbar li a{
   color: #111;
 }
 
+.wrapper.home .breadcrumb {
+  display: none;
+}
+
 
 .mainHeader {
   box-shadow: 0 0 5px -2px #000;
 }
 /*banner */
-.block-heroimages > div {
+.block-heroimages {
+  margin-top: 14px;
+}
+
+.block-heroimages > div,
+.block-heroimages .swiper-slide,
+.block-heroimages .bannerItem
+ {
   min-height: 300px;
   background-size: cover;
+  background-position: center;
 } 
 .block-heroimages.conferences .confHeaderInner {
   max-width: 1400px;
@@ -52,6 +64,11 @@ header .navbar li a{
 .block-heroimages.conferences .confHeaderInner > div {
   flex: 1 50%;
 }
+
+.block-heroimages.homeBanner .swiper-slide {
+  min-height: 450px;
+}
+
 
 
 .breadcrumb .navbar-nav {

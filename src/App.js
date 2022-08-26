@@ -16,8 +16,10 @@ import Conferences from './Pages/Conferences';
 import News from './Pages/News/News';
 import Events from './Pages/News/Events';
 import Awards from './Pages/Explore/Awards/Awards';
-
-
+import List from "./Components/Shared/List";
+import CommunityList from "./Components/Widgets/About/CommunityList";
+import Community from './Pages/About/Communities/Community';
+import Webinar from "./Components/Widgets/Webinar";
 import Explore from './Pages/Explore/Explore';
 import About from './Pages/About/About';
 import Staff from './Pages/About/Staff';
@@ -69,6 +71,13 @@ function App() {
           <Route path="/ethics/:page/*" element={<BasicPage  menu={menu} />} />
           <Route path="/ethics/ethicsfaq" element={<BasicPage  menu={menu} widget={<FAQ view="ethicsfaq" />} />} />
           
+          <Route path="/communities" element={<BasicPage  menu={menu} widget={<CommunityList />} />} />
+          <Route path="/freelance" element={<Community  menu={menu} />} />
+          <Route path="/freelance/:page" element={<BasicPage  menu={menu}  />} />
+
+          <Route path="/international" element={<Community  menu={menu} />} />
+          <Route path="/international/:page" element={<BasicPage  menu={menu} />} />
+
           <Route path="/awards" element={<Awards  menu={menu}/>} />
           <Route path="/awards/:category" element={<Awards  menu={menu}/>} />
           <Route path="/awards/:category/:code" element={<Awards  menu={menu}/>} />
@@ -78,6 +87,18 @@ function App() {
           <Route path="/about/committees" element={<Committees menu={menu} />} />
           <Route path="/about/committees/:term" element={<Committees menu={menu} />} />
           <Route path="/about/spj/staff" element={<Staff menu={menu}/>} />
+
+          <Route path="/membership" element={<BasicPage  menu={menu}  />} />
+
+          <Route path="/resources" element={<BasicPage  menu={menu}  />} />
+          <Route path="/foi" element={<BasicPage  menu={menu}  />} />
+          <Route path="/foi/:page/*" element={<BasicPage  menu={menu}  />} />
+          <Route path="/diversity" element={<BasicPage  menu={menu}  />} />
+          <Route path="/diversity/:page/*" element={<BasicPage  menu={menu}  />} />
+          <Route path="/webinars" 
+                element={<BasicPage hideSidebar menu={menu}  
+                widget={<List id="webinar_list" block="block_1" include="field_thumb" />} />} />
+          <Route path="/webinars/:page" element={<Webinar  menu={menu}  />} />
           
         </Route>
       </Routes>

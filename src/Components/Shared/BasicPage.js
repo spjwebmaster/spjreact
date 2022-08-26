@@ -15,8 +15,9 @@ function BasicPage(props){
     const [data, setData] = useState();
     const pathname = location.pathname;
     const widgets = props.widget;
+    const hideSidebar = (props.hideSidebar? true: false);
 
-    console.log("basicpage:", pathname)
+
     useEffect(() => {
         // code to run on component mount
 
@@ -30,6 +31,7 @@ function BasicPage(props){
                 fetch(newFetch).then(resp=>resp.json()).then(data=>{
 
                     setData(data.data) 
+           
                 })
                     
          })
@@ -42,14 +44,11 @@ function BasicPage(props){
         <div>
           
             <div className="row">
-                <div className="col-md-9">
+                <div className={(hideSidebar? "col-sm-12": "col-md-9")}>
 
                
                     {(data? <div>
                     
-                    
-                        <br />
-                        
                         <h1>{data.attributes.title}</h1>
                         
                         <div dangerouslySetInnerHTML={{__html: data.attributes.body.value}}></div>
@@ -63,9 +62,13 @@ function BasicPage(props){
 
                     {(widgets? widgets: "")}
                 </div>
+
+                {(hideSidebar? 
                 <div className="col-md-3">
                     <Sidebar location={location} menu={props.menu} />
                 </div>
+
+                :"")}
             </div>
             
 

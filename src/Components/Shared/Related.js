@@ -5,6 +5,8 @@ import {
     useParams,
   } from "react-router-dom";
 
+  import Feeds from "./Feeds";
+
 function Related(props){
 
 
@@ -29,7 +31,7 @@ function Related(props){
                 .then(response=>response.json())
                 .then(data => {
 
-                    console.log("related", data)
+   
                     setData(data.data)
                     setIncluded(data.included);
                     
@@ -52,12 +54,12 @@ function Related(props){
                 const thumbID = (item.relationships.field_thumb.data? item.relationships.field_thumb.data.id: 0);
                 const media = (thumbID!=0? included.filter(t=>t.id == thumbID): []);
 
-                console.log("media", media)
+
                 const featured = (media.length? media[0].attributes.uri.url : "https://www.theeastnashvillian.com/wp-content/uploads/2020/07/Placeholder-template-image-1.jpg");
 
 
                 return(
-                    <div key={item.id} className="col-sm-3 relatedCard">
+                    <div key={item.id} className="col-lg-3 col-md-6 relatedCard">
                         <div className="card mb-4">
                             <figure>
                                 <img src={featured} style={{width: "100%"}} />
@@ -75,6 +77,18 @@ function Related(props){
                     </div>
                 )
             }): <div></div>)}
+
+                <div className="col-lg-3 col-md-6 relatedCard">
+
+                    
+                    <Feeds type="JT" path={location.pathname} showView={true} />
+                    
+                </div>
+                <div className="col-lg-3 col-md-6 relatedCard">
+                   
+                    <Feeds type="Quill"  path={location.pathname} showView={true} />
+                    
+                </div>
             </div>
         </div>
     )

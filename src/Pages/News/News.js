@@ -5,6 +5,7 @@ import {
     useNavigate,
     useParams,
   } from "react-router-dom";
+  import Sidebar from "../../Components/Shared/Sidebar"
 
 
 function News(props){
@@ -108,7 +109,7 @@ function News(props){
              ))}
              </div>
                 <div className="col-md-3">
-                   Load sibling menu
+                    <Sidebar location={location} menu={props.menu} />
                 </div>
             </div>
             
