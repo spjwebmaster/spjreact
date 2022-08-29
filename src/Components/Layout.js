@@ -29,7 +29,7 @@ function Bread(props){
             let menuTitleNode = menu.filter(t=>t.attributes.url == breadcrumb.key);
             let menuTitle = (menuTitleNode.length? menuTitleNode[0].attributes.title: name);
             
-            //console.log("bread: ", breadcrumb.key, name, menuTitleNode[0]);
+
             return(
               <li className="nav-item" key={breadcrumb.key}>
                 <a className="nav-link" href={breadcrumb.key}>

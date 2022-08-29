@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 
-function List(props){
+function MemTypes(props){
 
     const [data, setData] = useState();
     const [included, setIncluded] = useState();
@@ -37,24 +37,22 @@ function List(props){
         {(data? <div>
 
             {data.map(item=>{
-                const mediaId = (includeField!=""? (item.relationships[includeField].data? item.relationships[includeField].data.id: null): null);
+                const mediaId = (includeField!=""? (item.relationships[includeField]? item.relationships[includeField].data.id: null): null);
                 const mediaItem = (included? included.filter(t=>t.id==mediaId): null);
                 
                 const anchorLink = (item.attributes.path? item.attributes.path.alias: item.attributes.field_path);
 
                 console.log("anchorLink", anchorLink);
-
-                const body = (props.summaryOnly? item.attributes.body.summary: item.attributes.body.processed);
                 return(
                     <div key={item.id}>
                        
                         <div className="row">
                             <div className="col">
                             <h2><a href={anchorLink}>{item.attributes.title}</a></h2>
-                                <div dangerouslySetInnerHTML={{__html: body}}></div>
+                                <div dangerouslySetInnerHTML={{__html: item.attributes.body.processed}}></div>
                             </div>
                             
-                            {(mediaItem[0]? <div className="col-sm-3">
+                            {(mediaItem? <div className="col-sm-3">
                                 
                                 <img src={mediaItem[0].attributes.uri.url} style={{width:"100%"}} />
                             </div>: "")}
@@ -69,4 +67,4 @@ function List(props){
     )
 }
 
-export default List;
+export default MemTypes;

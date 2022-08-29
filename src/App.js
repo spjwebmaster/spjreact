@@ -28,6 +28,8 @@ import NewsEvents from './Pages/News/NewsEvents';
 import NotFound from './Pages/NotFound';
 import Search from './Pages/Search';
 import Donate from './Pages/Donate';
+import Join from "./Pages/Membership/Join";
+import Codeofethics from "./Pages/Ethics/Codeofethics";
 import "./App.css";
 
 function App() {
@@ -70,6 +72,7 @@ function App() {
           <Route path="/ethics" element={<BasicPage  menu={menu} />} />
           <Route path="/ethics/:page/*" element={<BasicPage  menu={menu} />} />
           <Route path="/ethics/ethicsfaq" element={<BasicPage  menu={menu} widget={<FAQ view="ethicsfaq" />} />} />
+          <Route path="/ethics/codeofethics" element={<Codeofethics  menu={menu} />} />
           
           <Route path="/communities" element={<BasicPage  menu={menu} widget={<CommunityList />} />} />
           <Route path="/freelance" element={<Community  menu={menu} />} />
@@ -89,6 +92,12 @@ function App() {
           <Route path="/about/spj/staff" element={<Staff menu={menu}/>} />
 
           <Route path="/membership" element={<BasicPage  menu={menu}  />} />
+          <Route path="/membership/:page" element={<BasicPage  menu={menu}  />} />
+          <Route path="/membership/:page" element={<BasicPage  menu={menu}  />} />
+          <Route path="/membership/join" element={<Join  menu={menu}  />} />
+          <Route path="/membership/leads" element={<BasicPage  menu={menu} widget={<List id="leads" block="block_1" />} />} />
+          <Route path="/membership/membens" element={<BasicPage  menu={menu} widget={<List id="membership_benefits" block="block_1" include="field_benefit_logo" />} />} />
+
 
           <Route path="/resources" element={<BasicPage  menu={menu}  />} />
           <Route path="/foi" element={<BasicPage  menu={menu}  />} />

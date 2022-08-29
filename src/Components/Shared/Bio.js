@@ -3,7 +3,7 @@ function Bio(props){
 
 
     const item = props.item;
-    const profileImage = props.profile[0];
+    const profileImage = (props.profile? props.profile[0]: null);
 
     let body = (item.attributes.body ? item.attributes.body.value: "");
     

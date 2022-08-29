@@ -6,9 +6,11 @@ import {
     useParams,
   } from "react-router-dom";
 
-  import Sidebar from "./Sidebar"
+  import Sidebar from "../../Components/Shared/Sidebar"
+  import Block from "../../Components/Shared/Block";
+  import List from "../../Components/Shared/List";
 
-function BasicPage(props){
+function Join(props){
 
     let params = useParams();
     let location = useLocation();
@@ -16,7 +18,7 @@ function BasicPage(props){
     const pathname = location.pathname;
     const widgets = props.widget;
     const hideSidebar = (props.hideSidebar? true: false);
-    console.log("hide sidebar", hideSidebar)
+
 
 
     useEffect(() => {
@@ -45,7 +47,7 @@ function BasicPage(props){
         <div>
           
             <div className="row">
-                <div className={(hideSidebar? "col-sm-12": "col-md-9")}>
+                <div className="col-sm-12">
 
                
                     {(data? <div>
@@ -64,12 +66,21 @@ function BasicPage(props){
                     {(widgets? widgets: "")}
                 </div>
 
-                {(hideSidebar==false? 
-                <div className="col-md-3">
-                    <Sidebar location={location} menu={props.menu} />
-                </div>
+               
+                
 
-                :"")}
+             
+            </div>
+
+            <hr />
+            <div className="row">
+                <div className="col">
+                    <Block id="4" />
+                    <Block id="5" />
+                </div>
+                <div className="col">
+                    <List id="join_spj_options" block="block_1" summaryOnly />
+                </div>
             </div>
             
 
@@ -77,4 +88,4 @@ function BasicPage(props){
     )
 }
 
-export default BasicPage;
+export default Join;

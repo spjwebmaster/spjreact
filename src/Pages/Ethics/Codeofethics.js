@@ -6,9 +6,11 @@ import {
     useParams,
   } from "react-router-dom";
 
-  import Sidebar from "./Sidebar"
+  import Sidebar from "../../Components/Shared/Sidebar"
+  import List from "../../Components/Shared/List";
+  import CodeList from "../../Components/Widgets/Ethics/CodeList";
 
-function BasicPage(props){
+function Codeofethics(props){
 
     let params = useParams();
     let location = useLocation();
@@ -62,6 +64,12 @@ function BasicPage(props){
                     ))}
 
                     {(widgets? widgets: "")}
+
+                    <hr />
+                    <CodeList id="code_of_ethics_list" block="block_1" /><br />
+                    <CodeList id="code_of_ethics_list" block="block_2" /><br />
+                    <CodeList id="code_of_ethics_list" block="block_3" /><br />
+                    <CodeList id="code_of_ethics_list" block="block_4" /><br />
                 </div>
 
                 {(hideSidebar==false? 
@@ -77,4 +85,4 @@ function BasicPage(props){
     )
 }
 
-export default BasicPage;
+export default Codeofethics;
