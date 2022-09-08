@@ -12,7 +12,7 @@ function FooterDates(props){
             
             <h3>SPJ Events and Deadlines</h3>
                 <Dates limit="5" list="all" dateinttitle={true} />
-                <a href="/news/events">See All Events</a>
+                <a href="/events">See All Events</a>
             
         </div>
     )

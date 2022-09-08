@@ -65,10 +65,11 @@ function App() {
           <Route path="/search/:term" element={<Search />} />
           <Route path="/news" element={<News  menu={menu} />} />
           <Route path="/news/:title" element={<News   menu={menu}/>} />
-          <Route path="/news/events" element={<Events  menu={menu} />} />
+          
           <Route path="/donate" element={<Donate />} />
           <Route path="/news-events" element={<BasicPage menu={menu} />} />
-          <Route path="/news/events/:event" element={<Events />} />
+          <Route path="/events" element={<Events  menu={menu} />} />
+          <Route path="/events/:event" element={<Events />} />
           <Route path="/ethics" element={<BasicPage  menu={menu} />} />
           <Route path="/ethics/:page/*" element={<BasicPage  menu={menu} />} />
           <Route path="/ethics/ethicsfaq" element={<BasicPage  menu={menu} widget={<FAQ view="ethicsfaq" />} />} />
@@ -98,6 +99,8 @@ function App() {
           <Route path="/membership/leads" element={<BasicPage  menu={menu} widget={<List id="leads" block="block_1" />} />} />
           <Route path="/membership/membens" element={<BasicPage  menu={menu} widget={<List id="membership_benefits" block="block_1" include="field_benefit_logo" />} />} />
 
+          <Route path="/convention" element={<BasicPage  menu={menu}  />} />
+          <Route path="/convention/:page" element={<BasicPage  menu={menu}  />} />
 
           <Route path="/resources" element={<BasicPage  menu={menu}  />} />
           <Route path="/foi" element={<BasicPage  menu={menu}  />} />

@@ -1,7 +1,7 @@
 
 
 import React, { Component, useState, useEffect } from "react";
-import Breadcrumb from "../Components/Breadcrumb";
+
 
 export default function Conferences(props){
     const [data, setData] = useState();
@@ -23,7 +23,7 @@ export default function Conferences(props){
 
     return(
         <div>
-            <Breadcrumb  />
+   
            <h1>Regional Conferences</h1>
            {(data? <div>
                     <ul className="widget-list">

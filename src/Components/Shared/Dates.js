@@ -13,7 +13,7 @@ function Dates(props){
             fetch(`/calendarjson/${path}`)
                 .then(response=>response.json())
                 .then(data => {
-
+                    console.log("events", data.data)
                     setData(data.data)
                 })
         
@@ -30,13 +30,13 @@ function Dates(props){
                     {data.map(cal=>{
 
                         let title = (dateinttitle? cal.eventstart + " - " +cal.title: cal.title);
-                        
+                        let key = cal.link+"|"+title;
 
                         return(
-                            <li key={cal.link}>
-                                <a href={cal.link} target="_blank">
-                                    {title}
-                                    </a>
+                            <li key={key}>
+                                -<a href={cal.link} target="_blank">
+                                    {title} 
+                                </a>
                             </li>
                         )
                     })}
