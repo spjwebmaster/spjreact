@@ -62,7 +62,7 @@ function Awards(props){
                         
                         <h1>{data.attributes.title}</h1>
                         
-                        <div dangerouslySetInnerHTML={{__html: data.attributes.body.value}}></div>
+                        <div dangerouslySetInnerHTML={{__html: (data.attributes.body? data.attributes.body.value: "")}}></div>
 
                     </div>: (
                         <div>
@@ -73,7 +73,7 @@ function Awards(props){
 
                     {(widgets? widgets: "")}
 
-                    {(params.category? <div>Show cat</div>: <AwardList />)}
+                    {(params.category? <div>Show cat: {params.category}</div>: <AwardList />)}
                 </div>
                 <div className="col-md-3">
                     {(params.category? "": <Sidebar location={location} menu={props.menu}  />)}
