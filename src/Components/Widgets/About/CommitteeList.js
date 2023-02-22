@@ -32,7 +32,7 @@ function CommitteeList(props){
                             </a>
                         </h3> 
                         <span className="badge bg-info">{item.attributes.drupal_internal__tid}</span>
-                        <div dangerouslySetInnerHTML={{__html: item.attributes.description.processed}}></div>
+                        <div dangerouslySetInnerHTML={{__html: (item.attributes.description? item.attributes.description.processed: "")}}></div>
                         <hr />
                     </div>
                 )

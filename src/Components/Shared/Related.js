@@ -14,6 +14,8 @@ function Related(props){
     let location = useLocation();
     const [data, setData] = useState();
     const [included, setIncluded] = useState();
+    const pageID = props.pageID;
+
 
     let path = location.pathname;
     if(path=="/"){
@@ -58,24 +60,45 @@ function Related(props){
                 const featured = (media.length? media[0].attributes.uri.url : "https://www.theeastnashvillian.com/wp-content/uploads/2020/07/Placeholder-template-image-1.jpg");
 
 
-                return(
-                    <div key={item.id} className="col-lg-3 col-md-6 relatedCard">
-                        <div className="card mb-4">
-                            <figure>
-                                <img src={featured} style={{width: "100%"}} />
-                            </figure>
-                           
-                            <div className="card-body">
-                            <h3>{item.attributes.title}</h3>
-                                <div dangerouslySetInnerHTML={{__html: body}}></div>
-                            </div>
+                const thisID = item.id;
+               
+                let hideThis = false;
+                if(pageID==item.id){
+                    hideThis = true;
+                }
 
-                            <a href={item.attributes.path.alias} className="btn btn-primary">
-                                View
-                            </a>
+                if(item.id =="44b66572-c10d-4ce5-a621-8d16f852e506"){
+                    console.log("race no path alias", item)
+                }
+
+                if(!hideThis){
+                    return(
+                    
+                    
+                        <div key={item.id} className="col-lg-3 col-md-6 relatedCard">
+                            <div className="card mb-4">
+                               
+                                <figure>
+                                    <img src={featured} style={{width: "100%"}} />
+                                </figure>
+                               
+                                <div className="card-body">
+                                <h3>{item.attributes.title}</h3>
+                                    <div dangerouslySetInnerHTML={{__html: body}}></div>
+                                </div>
+                                {(item.attributes.path? 
+                                <a href={item.attributes.path.alias} className="btn btn-primary">
+                                    View
+                                </a>
+                                 : "get other link" )}
+                            </div>
                         </div>
-                    </div>
-                )
+                        
+                    )
+                } else {
+                    return "";
+                }
+                
             }): <div></div>)}
 
                 <div className="col-lg-3 col-md-6 relatedCard">

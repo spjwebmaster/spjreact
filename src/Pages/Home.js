@@ -17,7 +17,7 @@ import News from "./News/News";
 
 function Home(){
     const [data, setData] = useState();
-
+    const [pageID, setPageID] = useState("");
 
     useEffect(() => {
         // code to run on component mount
@@ -29,6 +29,7 @@ function Home(){
                 .then(data => {
 
                     let uuid = data.entity.uuid;
+                    setPageID(uuid);
                     let newFetch = "/jsonapi/node/page/" + uuid;
 
                     fetch(newFetch).then(resp=>resp.json()).then(data=>{
@@ -66,7 +67,7 @@ function Home(){
             </div>
 
             <hr />
-            <Related />
+            <Related pageID={pageID} />
 
             <hr />
 
