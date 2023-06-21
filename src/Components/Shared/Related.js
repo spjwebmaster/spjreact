@@ -29,7 +29,7 @@ function Related(props){
         
            
 
-            fetch(`/jsonapi/views/related_content/block_3?views-argument%5B0%5D=${path}&include=field_thumb`)
+            fetch(`/jsonapi/views/related_content/block_11?views-argument%5B0%5D=${path}&include=field_thumb`)
                 .then(response=>response.json())
                 .then(data => {
 
